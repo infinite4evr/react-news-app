@@ -13,6 +13,7 @@
 - Max use of components for reusability
 - A bit of responsiveness
 - Not used any UI lib ( I prefer MUI tho )
+- Avoided Redux/Any State management lib deliberately
 - Kept UI Simple but fluent
 
 ![Pic](public/pic.jpg)
