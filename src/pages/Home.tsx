@@ -17,7 +17,7 @@ import { Button } from 'components/Button/Button';
 import { useSearchParams } from 'react-router-dom';
 import { validateArticleRequestData } from 'utils/validators';
 
-const App = function App() {
+const Home: React.FC = () => {
   const [params, setParams] = useSearchParams();
   // we need to get data from params if someone loaded a url directly
   const [formState, setFormState] = useState({
@@ -234,4 +234,4 @@ const App = function App() {
   );
 };
 
-export default App;
+export default Home;
