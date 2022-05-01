@@ -1,0 +1,15 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; /* 10px */
+  font-family: 'Roboto', serif;
+  --primary-color: rgb(26, 120, 194);
+  --primary-warn: #f50057;
+}
