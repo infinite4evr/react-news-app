@@ -5,10 +5,10 @@ export const Container = styled('div')`
   justify-content: center;
   align-content: center;
   font-size: 1.6rem;
-  padding: 6rem;
+  padding: 4rem;
   flex-direction: column;
   width: 80%;
-  margin: 5rem auto;
+  margin: 0rem auto;
 
   @media (max-width: 320px) {
     width: 100%;

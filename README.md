@@ -1,4 +1,4 @@
-# npm install && npm start
+### npm install && npm start
 
 ## Features
 
@@ -13,3 +13,5 @@
 - Max use of components for reusability
 - A bit of responsiveness
 - Kept UI Simple
+
+![Pic](public/pic.jpg)
