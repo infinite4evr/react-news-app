@@ -1,7 +1,6 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './pages/App';
+import Home from './pages/Home';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(
@@ -10,7 +9,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <BrowserRouter>
     <Routes>
-      <Route path='/home' element={<App />} />
+      <Route path='/home' element={<Home />} />
       <Route path='*' element={<Navigate to='/home' />} />
     </Routes>
   </BrowserRouter>

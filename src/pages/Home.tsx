@@ -50,11 +50,11 @@ const validateForm = (formState: FormState) => {
 
 const App = function App() {
   const [params, setParams] = useSearchParams();
+  // we need to get data from params if someone loaded a url directly
   const [formState, setFormState] = useState({
     query: params.get('query') || '',
     publishedFrom: params.get('publishedFrom') || '',
     publishedTill: params.get('publishedTill') || '',
-
     // needs a check here
     sort:
       (params.get('sort') as OrderValuesTypes) || OrderValuesTypes.popularity,
@@ -87,6 +87,9 @@ const App = function App() {
 
     try {
       setLoading(true);
+      // we should make it a standalone api function in a diff file
+      // here for sake for brevity
+      // can use react-query lib for caching, pagination
       const reqResult = await api.get<ArticleApiResponse>(
         apiEndpoints.NEWS_API_URL,
         {
@@ -140,6 +143,7 @@ const App = function App() {
     []
   );
 
+  // if there are params then we directly load articles on page load
   useEffect(() => {
     if (params.get('query') && page === 0) {
       setPage(1);
@@ -153,6 +157,7 @@ const App = function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
 
+  // if last article is now on view then trigger a page increase
   useEffect(() => {
     if (lastArticleInView) {
       setPage(page => page + 1);
@@ -161,6 +166,8 @@ const App = function App() {
 
   const articles = articlesData?.articles;
 
+  // can use debounce for handling input changes
+  // or can use on blur instead of onchange
   return (
     <Container>
       <QueryForm>
