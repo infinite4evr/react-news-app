@@ -39,3 +39,15 @@ export enum OrderValuesTypes {
   popularity = 'popularity',
   publishedAt = 'publishedAt',
 }
+
+export interface IArticleRequestQueryParams {
+  query: string;
+  publishedFrom: string;
+  publishedTill: string;
+  sort: OrderValuesTypes;
+}
+
+export interface IArticleQueryParamsErrors
+  extends Partial<IArticleRequestQueryParams> {
+  message?: string;
+}

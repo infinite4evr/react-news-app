@@ -2,7 +2,11 @@ import axios from 'axios';
 import { apiEndpoints } from '../constants/api-constants';
 import React, { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
-import { ArticleApiResponse, OrderValuesTypes } from 'types/ArticleTypes';
+import {
+  ArticleApiResponse,
+  IArticleQueryParamsErrors,
+  OrderValuesTypes,
+} from 'types/ArticleTypes';
 import Input from 'components/Input/Input';
 import { api, isNewsApiError, PAGE_SIZE } from 'helpers/api';
 import Select from 'components/Select/Select';
@@ -11,42 +15,7 @@ import Article from 'components/Article/Article';
 import { Error, ArticlesContainer, Container, QueryForm } from './elements';
 import { Button } from 'components/Button/Button';
 import { useSearchParams } from 'react-router-dom';
-
-interface Errors extends Partial<FormState> {
-  message?: string;
-}
-
-interface FormState {
-  query: string;
-  publishedFrom: string;
-  publishedTill: string;
-  sort: OrderValuesTypes;
-}
-
-//can move to a validators file or somewhere else
-const validateForm = (formState: FormState) => {
-  const errors: Errors = {};
-  if (formState.query.length === 0) {
-    errors.query = 'Is required*';
-  }
-
-  if (new Date(formState.publishedFrom) > new Date()) {
-    errors.publishedFrom = 'Invalid*';
-  }
-
-  if (new Date(formState.publishedTill) > new Date()) {
-    errors.publishedTill = 'Invalid*';
-  }
-
-  if (new Date(formState.publishedTill) < new Date(formState.publishedFrom)) {
-    errors.publishedTill = 'Invalid*';
-  }
-
-  return {
-    valid: Object.keys(errors).length === 0,
-    errors,
-  };
-};
+import { validateForm } from 'utils/validators';
 
 const App = function App() {
   const [params, setParams] = useSearchParams();
@@ -61,7 +30,7 @@ const App = function App() {
   });
 
   const [page, setPage] = useState<number>(0);
-  const [errors, setErrors] = useState<Errors>({});
+  const [errors, setErrors] = useState<IArticleQueryParamsErrors>({});
   const [loading, setLoading] = useState(false);
   const [lastArticleRef, lastArticleInView] = useInView();
 
