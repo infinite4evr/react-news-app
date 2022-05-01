@@ -12,6 +12,6 @@
 - Follows strict multiple js/ts style recommendations
 - Max use of components for reusability
 - A bit of responsiveness
-- Kept UI Simple
+- Kept UI Simple but fluent
 
 ![Pic](public/pic.jpg)
