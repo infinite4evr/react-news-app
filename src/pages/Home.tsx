@@ -15,7 +15,7 @@ import Article from 'components/Article/Article';
 import { Error, ArticlesContainer, Container, QueryForm } from './elements';
 import { Button } from 'components/Button/Button';
 import { useSearchParams } from 'react-router-dom';
-import { validateForm } from 'utils/validators';
+import { validateArticleRequestData } from 'utils/validators';
 
 const App = function App() {
   const [params, setParams] = useSearchParams();
@@ -39,7 +39,7 @@ const App = function App() {
   );
 
   const fetchNews = React.useCallback(async () => {
-    const { valid, errors: formErrors } = validateForm(formState);
+    const { valid, errors: formErrors } = validateArticleRequestData(formState);
 
     if (!valid) {
       return setErrors(formErrors);
