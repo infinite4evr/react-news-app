@@ -2,7 +2,7 @@
 
 ## Features
 
-- Create shareable/bookmark -able links from search form
+- Create shareable/bookmarkable links from search form
 - Styled components to encapsulate all styles
 - Implemented from scratch without library bloat
 - Demonstrates React Router
